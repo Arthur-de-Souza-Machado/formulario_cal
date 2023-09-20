@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo imc</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        function click_calcular() {
+            let valorA = document.getElementById("txtValorA").value;
+            let valorB = document.getElementById("txtValorB").value;
+
+            if (valorA == "") {
+                alert("Informe o valor A");
+            } else if (valorB == "") {
+                alert("Informe o valor B");
+            } else {
+                let soma = Number(valorA) / (Number(valorB) ** 2);
+                document.getElementById("txtSoma").value = soma.toFixed(1);
+
+                if (soma < 18.5) {
+                    document.getElementById("class").value = "Magreza"; 
+                } else if (soma >= 18.5 && soma <= 24.9) {
+                    document.getElementById("class").value = "Peso Normal";
+                } else if (soma >= 25 && soma <= 29.9) {
+                    document.getElementById("class").value = "Sobrepeso";
+                } else if (soma >= 30 && soma <= 34.9) {
+                    document.getElementById("class").value = "Obesidade grau I";
+                } else if (soma >= 35 && soma <= 39.9) {
+                    document.getElementById("class").value = "Obesidade grau II";
+                } else {
+                    document.getElementById("class").value = "Obesidade grau III";
+                }
+            }
+        }
+
+        function click_limpar() {
+            document.getElementById("txtValorA").value = "";
+            document.getElementById("txtValorB").value = "";
+            document.getElementById("txtSoma").value = "";
+            document.getElementById("class").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <h1 id="tit">
+            Calculadora IMC
+        </h1>
+        <div>
+            <label for="txtValorA">Informe seu peso(Kg):</label><br>
+            <input type="number" name="" id="txtValorA" value="1">
+        </div>
+        <div>
+            <label for="txtValorB">Informe sua altura (metro e cm):</label><br>
+            <input type="number" name="" id="txtValorB">
+        </div>
+        <div>
+            <label for="txtSoma">Calculo: </label><br>
+            <input type="number" name="" id="txtSoma" disabled>
+        </div>
+        <div>
+            <label for="class">Classificação: </label><br>
+            <input type="text" name="" id="class" disabled>
+        </div>
+        <div>
+            <input type="button" value="Calcular" onclick="click_calcular();">
+
+            <input type="button" value="Limpar" onclick="click_limpar();">
+        </div>
+    </form>
+
+</body>
+
+</html>
